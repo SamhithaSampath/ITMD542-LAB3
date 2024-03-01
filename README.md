@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ITMD542-LAB2
 # Project README
 
@@ -49,3 +50,6 @@ During the development of this contact management application, I gained insights
 [Express.js Documentation](https://expressjs.com/)
 [Node.js Documentation](https://nodejs.org/)
 [MDN Web Docs - Regular Expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
+=======
+# ITMD542-LAB3
+>>>>>>> 49b4d0862ae53d74628efb16dc5073cece32947e
