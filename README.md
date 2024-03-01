@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-# ITMD542-LAB2
+# ITMD542-LAB3
 # Project README
 
 ## Name
@@ -10,13 +10,13 @@ ssampath1@hawkiit.edu
 
 ## Class and Assignment Numbers
 Class: [ITMD542]
-Assignment: [Lab2]
+Assignment: [Lab3]
 
 ## Git Repository URL
-[https://github.com/SamhithaSampath/ITMD542-LAB2.git]
+https://github.com/SamhithaSampath/ITMD542-LAB3.git
 
 ## Project Description
-This project is a contact management application developed using Express.js and Node.js. It allows users to create, view, edit, and delete contacts. The application uses a JSON file as a simple data store for managing contact information.
+This project is a contact management application developed using Express.js and Node.js. It allows users to create, view, edit, and delete contacts. The application uses sqlite3 as a data store for managing contact information.
 
 ## Development Environment
 - Operating System: [Windows11]
@@ -24,8 +24,8 @@ This project is a contact management application developed using Express.js and 
 - Text Editor/IDE: [Visual Studio Code]
 
 ## Installation/Running Instructions
-1. Clone the repository: `git clone https://github.com/SamhithaSampath/ITMD542-LAB2.git`
-2. Navigate to the project directory: `cd ITMD542-LAB2`
+1. Clone the repository: `git clone https://github.com/SamhithaSampath/ITMD542-LAB3.git`
+2. Navigate to the project directory: `cd ITMD542-LAB3`
 3. Install dependencies: `npm install`
 4. Start the application: `npm start`
 5. Open your browser and go to: `http://localhost:4000`
@@ -36,7 +36,7 @@ This project is a contact management application developed using Express.js and 
 During the development of this contact management application, I gained insights into the following key aspects:
 - **Express.js Routing**: Understanding and implementing routing in Express.js for managing different views and actions.
 - **Form Validation**: Implementing client-side form validation using regular expressions to ensure data integrity.
-- **Data Storage**: Utilizing a simple JSON file as a data store for contact information.
+- **Data Storage**: Utilizing sqlite3 as a data store for contact information.
 
 ### Results:
 - **Successful CRUD Operations**: The application allows users to successfully perform CRUD (Create, Read, Update, Delete) operations on contacts.
