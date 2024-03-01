@@ -87,9 +87,11 @@ router.post('/', (req, res) => {
     // Generate a unique ID using uuidv4()
     const uniqueId = uuidv4();
 
-    // Insert the new contact into the SQLite database with the unique ID
-    db.run('INSERT INTO contacts (id, firstName, lastName, emailAddress, notes) VALUES (?, ?, ?, ?, ?)',
-      [uniqueId, newContact.firstName, newContact.lastName, newContact.emailAddress, newContact.notes],
+    const currentDate = new Date().toISOString(); // Updated to use ISO format
+
+    // Insert the new contact into the SQLite database with the unique ID and current date
+    db.run('INSERT INTO contacts (id, firstName, lastName, emailAddress, notes, createdAt, updatedAt) VALUES (?, ?, ?, ?, ?, ?, ?)',
+      [uniqueId, newContact.firstName, newContact.lastName, newContact.emailAddress, newContact.notes, currentDate, currentDate],
       function (err) {
         if (err) {
           console.error('Error inserting contact into SQLite:', err);
@@ -102,8 +104,6 @@ router.post('/', (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
-
-
 
 /* Route to view a single contact */
 router.get('/:id', (req, res) => {
@@ -123,13 +123,23 @@ router.get('/:id', (req, res) => {
         return res.status(404).send('Contact not found');
       }
 
-      res.render('contacts/show', { contact, layout: 'layout' });
+      // Format createdAt and updatedAt dates for better readability
+      const formattedContact = {
+        ...contact,
+        createdAt: new Date(contact.createdAt).toLocaleString(),
+        updatedAt: new Date(contact.updatedAt).toLocaleString(),
+      };
+
+      res.render('contacts/show', { contact: formattedContact, layout: 'layout' });
     });
   } catch (error) {
     console.error('Error retrieving contact:', error);
     res.status(500).send('Internal Server Error');
   }
 });
+
+
+
 
 
 /* Route to render a form for editing an existing contact */
@@ -183,9 +193,11 @@ router.post('/:id', (req, res) => {
         return;
       }
 
-      // Update the existing contact in the SQLite database
-      db.run('UPDATE contacts SET firstName = ?, lastName = ?, emailAddress = ?, notes = ? WHERE id = ?',
-        [sanitizedData.firstName, sanitizedData.lastName, sanitizedData.emailAddress, sanitizedData.notes, id],
+      const currentDate = new Date().toISOString(); // Updated to use ISO format
+
+      // Update the existing contact in the SQLite database with the current date
+      db.run('UPDATE contacts SET firstName = ?, lastName = ?, emailAddress = ?, notes = ?, updatedAt = ? WHERE id = ?',
+        [sanitizedData.firstName, sanitizedData.lastName, sanitizedData.emailAddress, sanitizedData.notes, currentDate, id],
         function (err) {
           if (err) {
             console.error('Error updating contact in SQLite:', err);

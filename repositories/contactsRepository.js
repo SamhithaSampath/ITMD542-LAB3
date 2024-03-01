@@ -112,6 +112,10 @@ function deleteContact(id, callback) {
     }
   });
 }
+//
+function generateId() {
+  return `generated-id-${Date.now()}`;
+}
 
 module.exports = {
   getAllContacts,
