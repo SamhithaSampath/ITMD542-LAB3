@@ -23,20 +23,21 @@ router.use((req, res, next) => {
 
 /* Validation function to check if required fields are present and non-numeric */
 function validateContactData(data) {
-const { firstName, lastName, emailAddress } = data;
+  const { firstName, lastName, emailAddress } = data;
   const isNonEmptyString = value => typeof value === 'string' && value.trim() !== '';
   const containsOnlyLetters = value => /^[A-Za-z]+$/.test(value);
   const isNonNumericFirstName = isNonEmptyString(firstName) && containsOnlyLetters(firstName);
   const isNonNumericLastName = isNonEmptyString(lastName) && containsOnlyLetters(lastName);
-  const isInvalidEmail = emailAddress && !/^\S+@\S+\.\S+$/.test(emailAddress);
+  const isInvalidEmail = emailAddress && (!/^\S+@\S+\.\S+$/.test(emailAddress) || !/^[a-z]/.test(emailAddress));
 
   let errorMessage = 'Please correct the following issues:';
   if (!isNonNumericFirstName) errorMessage += ' First name should contain only letters.';
   if (!isNonNumericLastName) errorMessage += ' Last name should contain only letters.';
-  if (isInvalidEmail) errorMessage += ' Please provide a valid email address.';
+  if (isInvalidEmail) errorMessage += ' Email address should start with a lowercase letter and provide a valid email address.';
 
   return { isValid: isNonNumericFirstName && isNonNumericLastName && !isInvalidEmail, errorMessage };
 }
+
 
 /* Sanitize user input */
 function sanitizeContactData(data) {
@@ -77,8 +78,7 @@ router.post('/', (req, res) => {
     const validationResult = validateContactData(req.body);
 
     if (!validationResult.isValid) {
-      const contacts = contactsRepository.getAllContacts();
-      return res.render('contacts/new', { errorMessage: validationResult.errorMessage, contacts, layout: 'layout' });
+      return res.render('contacts/new', { errorMessage: validationResult.errorMessage, layout: 'layout' });
     }
 
     const sanitizedData = sanitizeContactData(req.body);
@@ -173,9 +173,9 @@ router.post('/:id', (req, res) => {
     const { id } = req.params;
     const { firstName, lastName, emailAddress, notes } = req.body;
     const validation = validateContactData(req.body);
+
     if (!validation.isValid) {
-      const contact = contactsRepository.getContactById(id);
-      return res.render('contacts/edit', { errorMessage: validation.errorMessage, contact, layout: 'layout' });
+      return res.render('contacts/edit', { errorMessage: validation.errorMessage, layout: 'layout' });
     }
 
     const sanitizedData = sanitizeContactData(req.body);
