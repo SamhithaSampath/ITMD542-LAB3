@@ -25,7 +25,7 @@ This project is a contact management application developed using Express.js and 
 
 ## Installation/Running Instructions
 1. Clone the repository: `git clone https://github.com/SamhithaSampath/ITMD542-LAB3.git`
-2. Navigate to the project directory: `cd ITMD542-LAB3`
+2. Navigate to the project directory: `cd ITMD542-LAB3`or by using this -> git clone https://github.com/SamhithaSampath/ITMD542-LAB3.git <new-directory>.(Example:git clone <repository-url> <new-directory>)
 3. Install dependencies: `npm install`
 4. Start the application: `npm start`
 5. Open your browser and go to: `http://localhost:4000`
