@@ -29,6 +29,12 @@ This project is a contact management application developed using Express.js and 
 3. Install dependencies: `npm install`
 4. Start the application: `npm start`
 5. Open your browser and go to: `http://localhost:4000`
+or (more clarity)
+1.git clone https://github.com/SamhithaSampath/ITMD542-LAB3.git <new-directory>
+2.After cloning, navigate into the cloned directory
+3. Install dependencies: npm install
+4. Start the application: npm start
+5. Open your browser and go to: http://localhost:4000
 
 ## Insights and Results
 
