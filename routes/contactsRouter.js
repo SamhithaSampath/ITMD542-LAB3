@@ -35,6 +35,10 @@ function validateContactData(data) {
   if (!isNonNumericLastName) errorMessage += ' Last name should contain only letters.';
   if (isInvalidEmail) errorMessage += ' Email address should start with a lowercase letter and provide a valid email address.';
 
+  // Check for required fields
+  if (!isNonEmptyString(firstName)) errorMessage += ' First name is required.';
+  if (!isNonEmptyString(lastName)) errorMessage += ' Last name is required.';
+
   return { isValid: isNonNumericFirstName && isNonNumericLastName && !isInvalidEmail, errorMessage };
 }
 
@@ -264,6 +268,7 @@ router.get('/generated/:id', (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+
 
 // Close the SQLite database connection when the Node.js process exits
 process.on('exit', () => {

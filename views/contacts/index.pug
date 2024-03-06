@@ -8,7 +8,6 @@ block content
     table.table.table-striped
       thead
         tr
-          th ID
           th First Name
           th Last Name
           th Email Address
@@ -16,7 +15,6 @@ block content
       tbody
         each contact in contacts
           tr
-            td #{contact.id}
             td #{contact.firstName}
             td #{contact.lastName}
             td #{contact.emailAddress}
@@ -44,5 +42,6 @@ block content
   // Include your contact info if needed
   p
     | For any inquiries or support, contact us at support@example.com.
+
 
 
