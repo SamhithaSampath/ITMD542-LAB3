@@ -24,11 +24,17 @@ This project is a contact management application developed using Express.js and 
 - Text Editor/IDE: [Visual Studio Code]
 
 ## Installation/Running Instructions
-1. Clone the repository: `git clone https://github.com/SamhithaSampath/ITMD542-LAB3.git`
-2. Navigate to the project directory: `cd ITMD542-LAB3`
+1. Clone the repository: `git clone https://github.com/SamhithaSampath/ITMD542-LAB3.git` or by using this -> git clone https://github.com/SamhithaSampath/ITMD542-LAB3.git <new-directory> (Example:git clone <repository-url> <new-directory>).
+2. Navigate to the project directory: `cd ITMD542-LAB3`or After cloning, navigate into the cloned directory
 3. Install dependencies: `npm install`
 4. Start the application: `npm start`
 5. Open your browser and go to: `http://localhost:4000`
+or 
+1. git clone https://github.com/SamhithaSampath/ITMD542-LAB3.git <new-directory>
+2. After cloning, navigate into the cloned directory
+3. Install dependencies: npm install
+4. Start the application: npm start
+5. Open your browser and go to: http://localhost:4000
 
 ## Insights and Results
 
